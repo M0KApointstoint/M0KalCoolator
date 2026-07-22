@@ -23,3 +23,14 @@ flip it's bits and add one at the end. This can be implemented in our simple
 8-bit adder using XOR gates the first carry-in bit, and another input pin that
 triggers subtraction.
 
+- Also, when it comes to subtraction, the last "carry" can show us if B is
+ greater than A or not, because since we are working with one byte, negating B
+is equivalent to calculating 255 - B, therefore we have that:
+
+```text
+A - B = A + (-B) = A + (255 - B) + 1 = (A - B) + 256
+```
+
+- That 256 at the end is our nine bit 100000000 which makes the "carry" bit go
+on.
+
