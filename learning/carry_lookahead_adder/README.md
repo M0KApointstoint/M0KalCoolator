@@ -1,4 +1,4 @@
-# Carry Lookahead Carry
+# Carry Lookahead Adder
 
 **All the important details needed can be found in the following two videos:**
 
@@ -19,4 +19,7 @@ induction works as well. I am not gonna derive anything here, since much
 of it can be found in the videos above. The only rigour in those derivations
 are related to the beautiful properites of boolean algbera... Proven them a
 long time ago... Memories... .
+
+- After completing one carry lookahead adder, we can then construct a 4-bit
+lookahead adder using the found equations.
 
