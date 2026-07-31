@@ -11,7 +11,7 @@ you watch it:
 
 - From Assembly knowledge, we know that there is a bijection between CPU
 instructions and opcodes (simple machine code binary). We will design the CPU
-so that it can handle 4-bit opcodes, since 16 possible operations is a pretty
+so that it can handle 3-bit opcodes, since 8 possible operations is a pretty
 good number for this computer.
 
 ```text
