@@ -29,6 +29,7 @@ good number for this computer.
              │
              ▼
            Flags
+         (4 flags)
 ```
 
 *The text scheme from above was generated with the help of Claude Opus 4.8.*
@@ -64,5 +65,10 @@ See the videos and compare if interested.
 
 **Flags:**
 
-- Aici e buba: TODO.
+```text
+- Carry flag   : (CF) - The result generated a carry
+- Zero flag    : (ZF) - The result is zero
+- Negative flag: (SF) - The result is negative (with sign bit on)
+- Overflow flag: (OF) - The result generated an overflow
+```
 
