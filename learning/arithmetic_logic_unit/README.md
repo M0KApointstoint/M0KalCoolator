@@ -1,6 +1,6 @@
 # Arithmetic Logic Unit (ALU)
 
-- This **amazing** video from
+This **amazing** video from
 [Core Dumped](https://www.youtube.com/@CoreDumpped) is very useful for
 understanding the basics of ALUs, starting from the transistor level, which
 maps perfectly to the real life objective of this project, I really recommend
@@ -9,7 +9,7 @@ you watch it:
 
 **We want our CPU to do more operations than just addition and subtraction.**
 
-- From Assembly knowledge, we know that there is a bijection between CPU
+From Assembly knowledge, we know that there is a bijection between CPU
 instructions and opcodes (simple machine code binary). We will design the CPU
 so that it can handle 3-bit opcodes, since 8 possible operations is a pretty
 good number for this computer.
@@ -34,18 +34,30 @@ good number for this computer.
 
 *The text scheme from above was generated with the help of Claude Opus 4.8.*
 
-- Some videos from
+Some videos from
 [Polymath Unlimited](https://www.youtube.com/@PolymathUnlimited-du2hg)
 that helped for desigining the ALU:
 - [How A Computer Thinks: Designing an ALU From Scratch (The CPU You Can Build, Ep. 6)](https://www.youtube.com/watch?v=yJoQj21jX_c)
 
 - [Finishing the ALU (The CPU You can Build, ep. 7)](https://www.youtube.com/watch?v=O43Qrq3CDs4&t=108s)
 
-- There are some differences between the instruction codes used in the video
+There are some differences between the instruction codes used in the video
 and the instruction codes used by me. We sit somewhere between `Ben Eater`
 and `Polymath Unlimited`.
 
-- I named the instructions so that they can map into real Intel x86 mnemonics.
+I **really** recommend you watch `Ben Eater's` videos on the ALU topic as well:
+
+- [ALU Design](https://www.youtube.com/watch?v=mOVOS9AjgFs)
+
+- [Building the ALU](https://www.youtube.com/watch?v=S-3fXU3FZQc)
+
+*The two videos from below are related to debugging but still useful to watch:*
+
+- [Troubleshooting the ALU](https://www.youtube.com/watch?v=U7Q8-2YZTUU)
+
+- [Testing the computer's ALU](https://www.youtube.com/watch?v=4nCMDvnR2Fg)
+
+I named the instructions so that they can map into real Intel x86 mnemonics.
 See the videos and compare if interested.
 
 **ALU Opcodes:**
