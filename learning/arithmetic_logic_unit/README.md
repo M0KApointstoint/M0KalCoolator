@@ -83,7 +83,7 @@ Starting from the 8-bit adder circuit that can also do subtraction we can
 take into account already used internal logic to get other operations as well:
 
 - The `ADD` and `SUB` operations are already implemented using the `subtract`
-bit
+bit set to zero and one, respectively
 
 - The `AND` operation can be implemented using adder internals when `subtract`
 is set to zero
@@ -103,9 +103,47 @@ very easy to do
 
 Since opcodes represent inputs for the 8 : 1 multiplexers that select each bit
 from the result, we need to choose operation codes that will save hardware
-materials and keep the circuit nice.
+materials and keep the circuit nice:
 
-**Detailed view of an 1-bit ALU chunk from the 8-bit ALU:**
+```text
+| Operation | Subtract bit |
+|-----------|--------------|
+|    ADD    |      0       |
+|    SUB    |      1       |
+|    AND    |      0       |
+|    OR     |      *       |
+|    XOR    |      0       |
+|    NOT    |      1       |
+|    SHL    |      *       |
+|    SHR    |      *       |
+```
+
+Since every operation has a 3-bit opcode we need to make some sort of
+`reverse engineering` on `Karnaugh map` minimization.
+
+The following mapping seems the most appropiate to my taste:
+
+```text
+| Operation | Code |
+|-----------|------|
+|    ADD    | 000  |
+|    AND    | 001  |
+|    SUB    | 010  |
+|    NOT    | 011  |
+|    XOR    | 100  |
+|    OR     | 101  |
+|    SHL    | 110  |
+|    SHR    | 111  |
+```
+
+```text
+|  O2 \ O1O0  |  00  |  01  |  11  |  10  |
+|-------------|------|------|------|------|
+|      0      |  0   |  1   |  *   |  0   |
+|      1      |  0   |  1   |  *   |  *   |
+```
+
+**Abstract view of an 1-bit ALU chunk from the 8-bit ALU:**
 
 ```text
                   Opcode
@@ -114,15 +152,15 @@ A0 ───┐           │ │ │
    ┌──────┐    ┌───────────┐
    │ ADD0 │───▶│000        │
    ├──────┤    │           │
-   │ SUB0 │───▶│001        │
+   │ AND0 │───▶│001        │
    ├──────┤    │           │
-   │ AND0 │───▶│010        │
+   │ SUB0 │───▶│010        │
    ├──────┤    │           │
-   │ OR0  │───▶│011  8 : 1 │
+   │ NOT0 │───▶│011  8 : 1 │
    ├──────┤    │      MUX  │───▶ Result0
    │ XOR0 │───▶│100        │
    ├──────┤    │           │
-   │ NOT0 │───▶│101        │
+   │ OR0  │───▶│101        │
    ├──────┤    │           │
    │ SHL0 │───▶│110        │
    ├──────┤    │           │
