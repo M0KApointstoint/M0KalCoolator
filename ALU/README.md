@@ -1,5 +1,7 @@
 # Arithmetic Logic Unit (ALU)
 
+## TODO: Mux every result bit.
+
 **I strongly recommend you first check the ALU `learning` bit:**
 
 ```bash
@@ -9,6 +11,8 @@ $ ls -l
 
 **I again recommend what I just recommended above if you did not take my**
 **recommendation!**
+
+[Learn more about the ALU implementation](https://github.com/M0KApointstoint/M0KalCoolator/tree/main/learning/arithmetic_logic_unit)
 
 **Abstract ALU scheme:**
 
