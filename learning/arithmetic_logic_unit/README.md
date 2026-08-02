@@ -71,12 +71,12 @@ See the videos and compare if interested.
 ```text
 - ADD : Basic addition, A + B
 - SUB : Basic subtraction, A - B
-- AND : BASIC bitwise AND, A & B
-- OR  :  Basic bitwise OR, A | B
-- XOR : Basic bitwise XOR, A ^ B
-- NOT : One's complement, bitwise invert A, ~A
-- SHL : Logical left shift on A, A << 1
-- SHR : Logical right shift on A, A >> 1
+- AND : Bitwise AND, A & B
+- OR  : Bitwise OR, A | B
+- XOR : Bitwise XOR, A ^ B
+- NOT : One's complement, bitwise invert B, ~B
+- SHL : Logical left shift on B, B << 1
+- SHR : Logical right shift on B, B >> 1
 ```
 
 Starting from the 8-bit adder circuit that can also do subtraction we can
