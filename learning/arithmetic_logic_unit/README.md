@@ -139,8 +139,8 @@ The following mapping seems the most appropiate to my taste:
 ```text
 |  O2 \ O1O0  |  00  |  01  |  11  |  10  |
 |-------------|------|------|------|------|
-|      0      |  0   |  1   |  *   |  0   |
-|      1      |  0   |  1   |  *   |  *   |
+|      0      |  0   |  0   |  1   |  1   |
+|      1      |  0   |  *   |  *   |  *   |
 ```
 
 **Abstract view of an 1-bit ALU chunk from the 8-bit ALU:**
