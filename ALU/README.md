@@ -79,7 +79,7 @@ B0 ───┘
 **Subtract bit:**
 
 ```text
-Subtract bit = Opcode1 * !Opcode0
+Subtract bit = Opcode1
 ```
 
 **ALU Flags:**

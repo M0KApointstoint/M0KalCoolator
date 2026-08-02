@@ -146,7 +146,7 @@ The following mapping seems the most appropiate to my taste:
 We then get the following boolean expression:
 
 ```text
-Subtract bit = O1 * !O0
+Subtract bit = O1
 ```
 
 **Abstract view of an 1-bit ALU chunk from the 8-bit ALU:**
