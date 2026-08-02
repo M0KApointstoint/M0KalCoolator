@@ -89,7 +89,7 @@ $ ls -l
 - The `AND` operation can be implemented using adder internals when `subtract`
 is set to zero
 
-- The `OR` operation can be implemented using: TODO
+- The `OR` operation can be implemented using actual OR gates
 
 - The `XOR` operation can be implemented using adder internals when `subtract`
 is set to zero
