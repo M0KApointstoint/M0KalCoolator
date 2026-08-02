@@ -14,6 +14,8 @@ instructions and opcodes (simple machine code binary). We will design the CPU
 so that it can handle 3-bit opcodes, since 8 possible operations is a pretty
 good number for this computer.
 
+**Abstract ALU view:**
+
 ```text
          ALU Opcode
           (3 bits)
@@ -41,9 +43,13 @@ that helped for desigining the ALU:
 
 - [Finishing the ALU (The CPU You can Build, ep. 7)](https://www.youtube.com/watch?v=O43Qrq3CDs4&t=108s)
 
-There are some differences between the instruction codes used in the video
-and the instruction codes used by me. We sit somewhere between `Ben Eater`
-and `Polymath Unlimited`.
+**Important note:**
+
+There are **many** differences between the design chosen by me and
+`Ben Eater's` and `Polymath Unlimited's` designs. I like to say that we are
+somewhere near the middle.
+
+**The main objective is learning as much as possible but being *unique* too!**
 
 I **really** recommend you watch `Ben Eater's` videos on the ALU topic as well:
 
@@ -60,20 +66,71 @@ I **really** recommend you watch `Ben Eater's` videos on the ALU topic as well:
 I named the instructions so that they can map into real Intel x86 mnemonics.
 See the videos and compare if interested.
 
-**ALU Opcodes:**
+**ALU Operations:**
 
 ```text
-- 000 (0x0): ADD - Basic addition, A + B
-- 001 (0x1): SUB - Basic subtraction, A - B
-- 010 (0x2): AND - BASIC bitwise AND, A & B
-- 011 (0x3): OR  - Basic bitwise OR, A | B
-- 100 (0x4): XOR - Basic bitwise XOR, A ^ B
-- 101 (0x5): NOT - One's complement, bitwise invert A, ~A
-- 110 (0x6): SHL - Logical left shift on A, A << 1
-- 111 (0x7): SHR - Logical right shift on A, A >> 1
+- ADD : Basic addition, A + B
+- SUB : Basic subtraction, A - B
+- AND : BASIC bitwise AND, A & B
+- OR  :  Basic bitwise OR, A | B
+- XOR : Basic bitwise XOR, A ^ B
+- NOT : One's complement, bitwise invert A, ~A
+- SHL : Logical left shift on A, A << 1
+- SHR : Logical right shift on A, A >> 1
 ```
 
-*Choosing the ALU opcodes was done with the help of Claude Opus 4.8.*
+Starting from the 8-bit adder circuit that can also do subtraction we can
+take into account already used internal logic to get other operations as well:
+
+- The `ADD` and `SUB` operations are already implemented using the `subtract`
+bit
+
+- The `AND` operation can be implemented using adder internals when `subtract`
+is set to zero
+
+- The `OR` operation can be implemented using actual OR gates
+
+- The `XOR` operation can be implemented using adder internals when `subtract`
+is set to zero
+
+- The `NOT` operation can be implemented using adder internals when `subtract`
+is set to one
+
+- The `SHL` and `SHR` operations can be implemented only using the input wires,
+very easy to do
+
+**ALU Opcodes:**
+
+Since opcodes represent inputs for the 8 : 1 multiplexers that select each bit
+from the result, we need to choose operation codes that will save hardware
+materials and keep the circuit nice.
+
+**Detailed view of an 1-bit ALU chunk from the 8-bit ALU:**
+
+```text
+                  Opcode
+A0 ───┐           │ │ │
+      ▼           ▼ ▼ ▼
+   ┌──────┐    ┌───────────┐
+   │ ADD0 │───▶│000        │
+   ├──────┤    │           │
+   │ SUB0 │───▶│001        │
+   ├──────┤    │           │
+   │ AND0 │───▶│010        │
+   ├──────┤    │           │
+   │ OR0  │───▶│011  8 : 1 │
+   ├──────┤    │      MUX  │───▶ Result0
+   │ XOR0 │───▶│100        │
+   ├──────┤    │           │
+   │ NOT0 │───▶│101        │
+   ├──────┤    │           │
+   │ SHL0 │───▶│110        │
+   ├──────┤    │           │
+   │ SHR0 │───▶│111        │
+   └──────┘    └───────────┘
+      ▲
+B0 ───┘
+```
 
 **Flags:**
 
