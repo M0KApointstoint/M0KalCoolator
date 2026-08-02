@@ -1,11 +1,14 @@
 # Arithmetic Logic Unit (ALU)
 
-**I really recommend you first check the ALU `learning` bit:**
+**I strongly recommend you first check the ALU `learning` bit:**
 
 ```bash
 $ cd ../learning/arithmetic_logic_unit/
 $ ls -l
 ```
+
+**I again recommend what I just recommended above if you did not take my**
+**recommendation!**
 
 **Abstract ALU scheme:**
 
@@ -31,13 +34,48 @@ $ ls -l
 
 ```text
 - 000 (0x0): ADD - Basic addition, A + B
-- 001 (0x1): SUB - Basic subtraction, A - B
-- 010 (0x2): AND - BASIC bitwise AND, A & B
-- 011 (0x3): OR  - Basic bitwise OR, A | B
-- 100 (0x4): XOR - Basic bitwise XOR, A ^ B
-- 101 (0x5): NOT - One's complement, bitwise invert B, ~B
+- 001 (0x1): AND - Bitwise AND, A & B
+- 010 (0x2): SUB - Basic subtraction, A - B
+- 011 (0x3): NOT - One's complement, bitwise invert B, ~B
+- 100 (0x4): XOR - Bitwise XOR, A ^ B
+- 101 (0x5): OR  - Bitwise OR, A | B
 - 110 (0x6): SHL - Logical left shift on B, B << 1
 - 111 (0x7): SHR - Logical right shift on B, B >> 1
+```
+
+**Abstract 1-bit ALU chunk from the 8-bit ALU scheme:**
+
+```text
+                  Opcode
+A0 ───┐           │ │ │
+      ▼           ▼ ▼ ▼
+   ┌──────┐    ┌───────────┐
+   │ ADD0 │───▶│000        │
+   ├──────┤    │           │
+   │ AND0 │───▶│001        │
+   ├──────┤    │           │
+   │ SUB0 │───▶│010        │
+   ├──────┤    │           │
+   │ NOT0 │───▶│011  8 : 1 │
+   ├──────┤    │      MUX  │───▶ Result0
+   │ XOR0 │───▶│100        │
+   ├──────┤    │           │
+   │ OR0  │───▶│101        │
+   ├──────┤    │           │
+   │ SHL0 │───▶│110        │
+   ├──────┤    │           │
+   │ SHR0 │───▶│111        │
+   └──────┘    └───────────┘
+      ▲
+B0 ───┘
+```
+
+*The subtract bit does not appear above but it is taken into account.*
+
+**Subtract bit:**
+
+```text
+Subtract bit = Opcode1 * !Opcode0
 ```
 
 **ALU Flags:**
@@ -48,56 +86,4 @@ $ ls -l
 - Negative flag: (SF) - The result is negative (with sign bit on)
 - Overflow flag: (OF) - The result generated an overflow
 ```
-
-**Detailed ALU scheme:**
-
-```text
-                       Opcode
-A ───┐                   │
-     ▼                   ▼
-  ┌─────┐            ┌───────┐
-  │ ADD │─── 000 ───▶│       │
-  ├─────┤            │       │
-  │ SUB │─── 001 ───▶│       │
-  ├─────┤            │       │
-  │ AND │─── 010 ───▶│       │
-  ├─────┤            │       │
-  │ OR  │─── 011 ───▶│ 8 : 1 │
-  ├─────┤            │  MUX  │───▶ Result
-  │ XOR │─── 100 ───▶│       │       │
-  ├─────┤            │       │       ▼
-  │ NOT │─── 101 ───▶│       │┌─────────────┐
-  ├─────┤            │       ││    Flags    │
-  │ SHL │─── 110 ───▶│       ││   CF · ZF   │
-  ├─────┤            │       ││   SF · OF   │
-  │ SHR │─── 111 ───▶│       │└─────────────┘
-  └─────┘            └───────┘
-     ▲
-B ───┘
-```
-
-Some of the operations from above can be implemented using parts of our full
-adder that can also do subtraction, I recommend you check out the circuit:
-
-```bash
-$ cd ../learning/adders/8bit_adder_with_subtraction/
-$ ls -l
-```
-
-- The `ADD` and `SUB` operations are already implemented
-
-- The `AND` operation can be implemented using adder internals when `subtract`
-is set to zero
-
-- The `OR` operation can be implemented using actual OR gates
-
-- The `XOR` operation can be implemented using adder internals when `subtract`
-is set to zero
-
-- The `NOT` operation can be implemented using adder internals when `subtract`
-is set to one
-
-- The `SHL` operation can be implemented using: TODO
-
-- The `SHR` operation can be implemented using: TODO
 
