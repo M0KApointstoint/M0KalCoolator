@@ -176,7 +176,7 @@ A0 ───┐           │ │ │
 B0 ───┘
 ```
 
-**Flags:**
+**ALU Flags:**
 
 ```text
 - Carry flag   : (CF) - The result generated a carry
@@ -184,4 +184,35 @@ B0 ───┘
 - Negative flag: (SF) - The result is negative (with sign bit on)
 - Overflow flag: (OF) - The result generated an overflow
 ```
+
+# TODO:
+
+**More details about the flags:**
+
+- The `carry flag` gets set only from arithmetic and shift operations.
+For ADD and SUB: CF = 1 if and only if the true unsigned result falls outside
+0–255 (carry-out for ADD, borrow for SUB). For shifts: CF = the bit that gets
+shifted out: b7 for SHL, b0 for SHR. For logic: CF = 0, forced:
+
+```text
+| Operation |   CF   |
+|-----------|--------|
+|    ADD    | CARRY  |
+|    AND    |   0    |
+|    SUB    | !CARRY | < === > A < B (borrow)
+|    NOT    |   0    |
+|    XOR    |   0    |
+|    OR     |   0    |
+|    SHL    |   B7   |
+|    SHR    |   B0   |
+```
+
+- The `zero flag` gets set only if the result is zero, regardless
+of the operation
+
+- The `sign flag` gets set only if the result's most significant bit,
+R7, is set, regardless of the operation
+
+- The `overflow flag` gets set only from arithmetic operations:
+Too limited.
 
