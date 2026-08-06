@@ -1,0 +1,123 @@
+// MOCANU Cristian-Lucian, Facultatea de Automatica si Calculatoare, UPB.
+
+# 1.) Notiuni introductive pentru utilizarea numerelor intregi in baza 2:
+
+## 1.1.) Recapiture notiuni importante despre baza 10 si introducerea bazei 2:
+
+### 1.1.1.) Trecerea numerelor naturale din baza 10 in baza 2 si reciproc.
+
+## 1.2.) Reprezentarea numerelor intregi (negative) in baza 2:
+
+### 1.2.1.) Complement fata de 2;
+### 1.2.2.) Opusul unui numar intreg in baza 2.
+
+## 1.3.) Operatii aritmetice importante in baza 2:
+
+### 1.3.1.) Adunarea numerelor naturale in baza 2. Legatura cu baza 10;
+### 1.3.2.) Scaderea numerelor intregi in baza 2 (adunarea cu opusul).
+
+## 1.4.) Generalitati si rezultate matematice utilizate.
+
+# 2.) Porti logice. Circuite combinationale:
+
+## 2.1.) Porti logice folosite:
+
+### 2.1.1.) Poarta "SI" (AND);
+### 2.1.2.) Poarta "SAU" (OR);
+### 2.1.3.) Poarta "SAU EXCLUSIV" (XOR);
+### 2.1.4.) Inversorul (NOT);
+### 2.1.5.) Poarta NAND (Poarta universala);
+### 2.1.6.) Poarta NOR;
+### 2.1.6.) Multiplexorul (Selector).
+
+## 2.2.) Adunarea numerelor intregi binare folosind circuite (sumatoare):
+
+### 2.2.1.) Semi-Sumator (Half-Adder):
+
+#### 2.2.1.1.) Adunarea a doi biti: sum (suma), carry (transport);
+#### 2.2.1.2.) Problema semi-sumatorului, necesitatea unui bit de transport in plus.
+
+### 2.2.2.) Sumator complet (Full-Adder):
+
+#### 2.2.2.1.) Transport de intrare (Carry-In);
+#### 2.2.2.2.) Transport de iesire (Carry-Out), suma (sum);
+#### 2.2.2.3.) Implementare suma cu doua porti XOR;
+#### 2.2.2.4.) Implementare transport de iesire cu porti AND si SAU.
+
+### 2.2.3.) Sumatoare complete inlantuite, adunare pe mai multi biti:
+
+#### 2.2.3.1.) Sumator complet pe 2 biti;
+#### 2.2.3.2.) Sumator complet pe 8 biti (full 8-bit addition circuit);
+#### 2.2.3.3.) Unitate Aritmetica si Logica (UAL / ALU - Arithmetic Logic Unit);
+#### 2.2.3.4.) Tratarea ultimului bit de transport de intrare ca bit de suma;
+#### 2.2.3.5.) Implementarea scaderii cu ajutorul primului bit de transport de intrare;
+#### 2.2.3.6.) Generalizare, abstractizare, si limite;
+#### 2.2.3.7.) Implementare sumator complet pe 4 biti in Logisim-Evolution;
+#### 2.2.3.8.) Scadere cu porti XOR.
+
+# 3.) Circuite secventiale.
+
+## 3.1.) Bistabil asincron (Latch);
+
+### 3.2.1.) Implementare RS Latch in Logisim-Evolution, cu porti NOR;
+### 3.2.2.) Problema bistabilului asinron;
+### 3.2.3.) Implementare D Latch in Logisim-Evolution, cu RS Latch.
+
+## 3.2.) Bistabil sincron (Flip-Flop);
+
+### 3.2.1.) Diagrame de semnal (Timing diagrams);
+### 3.2.2.) Front crescator / descrescator al semnalului de ceas;
+### 3.2.3.) Bistabil de tip D sincron (D Flip-Flop);
+### 3.2.4.) Implementare in Logisim-Evolution.
+
+# 4.) Conectarea UAL cu bistabile:
+
+## 4.1) Salvarea iesirii din UAL cu bistabile de tip D care au acelasi ceas;
+
+## 4.2.) Registru si registre;
+
+## 4.3.) Interpretarea iesirilor din registru ca intrari pentru UAL (numaratorul);
+
+## 4.4.) Abstractizare;
+
+## 4.5.) Implementare in Logisim-Evolution.
+
+# 5.) Memorie cu acces aleator (RAM - Random Access Memory):
+
+## 5.1.) Adresa si valoare;
+
+## 5.2.) Citirea datelor din RAM:
+
+### 5.2.1.) Codificarea adreselor din RAM in binar;
+### 5.2.2.) Realizarea corespondentei dintre adrese si "registre", cu porti logice;
+### 5.2.3.) Afisarea valorii de la adresa selectata cu ajutorul corespondentei.
+
+## 5.3.) Scrierea datelor in RAM:
+
+### 5.3.1.) Folosirea bistabilelor;
+
+## 5.4.) Implementare RAM cu 4 adrese si 4 biti/adresa, in Logisim-Evolution:
+
+### 5.4.1.) Problema cu optiunea de "Write".
+
+# 6.) Legarea UAL cu RAM:
+
+## 6.1.) Implementare in Logisim-Evolution:
+
+### 6.1.1.) Abstractizare.
+
+## 6.2.) Necesitatea magistralelor (BUS):
+
+### 6.2.1.) Implementare BUS in Logisim-Evolution;
+### 6.2.2.) Necesitatea intrerupatoarelor.
+
+# 7.) Afisaj cu 7 segmente (7 Segment Display):
+
+## 7.1.) Imeplementare in Logisim-Evolution, pentru 4 biti.
+
+
+# Proiect practic:
+
+- Componente disponibile:
+
+
